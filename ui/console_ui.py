@@ -19,12 +19,11 @@ class ConsoleUI:
     #         raise ValueError("Duration of the song must be interger!")
 
     def __add_song(self):
-        id = input("Enter the id of the song: ")
+        id = int(input("Enter the id of the song: "))
         name = input("Enter the name of the song: ")
         artist = input("Enter the artist of the song: ")
         gen = input("Enter the gen of the song: ")
-        duration = input("Enter the duration of the song: ")
-        # self.__valide_duration(duration)
+        duration = float(input("Enter the duration of the song: "))
         self.__music_service.add_song(Music(id, name, artist, gen, duration))
 
     def __delete_song(self):
@@ -47,9 +46,9 @@ class ConsoleUI:
     def __print_menu(self):
         print("1. Add a song")
         print("2. Remove a song after id")
-        print("3. Afisarea celui mai comun gen muzical")
-        print("4. Afisarea duratei medii")
-        print("5. Afisarea melodiilor")
+        print("3. Print most common musical gen")
+        print("4. Print average duration")
+        print("5. Print all songs")
         print("0. Exit")
 
     def run(self):
