@@ -54,4 +54,3 @@ class Music:
         :return:
         """
         return other.get_id() == self.__id
-

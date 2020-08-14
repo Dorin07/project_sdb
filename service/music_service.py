@@ -20,29 +20,3 @@ class MusicService:
 
     def get_all_songs(self):
         return self.__repository.get_all()
-
-    def average_duration(self):
-        songs = self.__repository.get_all()
-        s = 0
-        for i in range(len(songs)):
-            s += songs[i].get_duration()
-        return s / len(songs)
-
-    def most_common_gen(self):
-        """
-        Finds the most common gen of which songs
-        :return: The gen which is most common
-        """
-        songs = self.__repository.get_all()
-        global gen
-        max = 0
-        for i in range(len(songs)):
-            c = 0
-            genul = songs[i].get_gen()
-            for index in range(len(songs)):
-                if songs[index].get_gen() == genul:
-                    c += 1
-            if (c > max):
-                max = c
-                gen = genul
-        return gen
