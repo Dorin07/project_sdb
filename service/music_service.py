@@ -2,7 +2,6 @@ import json
 from domain.music import Music
 from repository.in_memory_repository import InMemoryRepository
 
-
 class MusicService:
     def __init__(self, repository: InMemoryRepository):
         self.__repository = repository

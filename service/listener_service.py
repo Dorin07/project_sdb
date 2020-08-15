@@ -2,7 +2,6 @@ import json
 from domain.listener import Listener
 from repository.in_memory_repository import InMemoryRepository
 
-
 class ListenerService:
     def __init__(self, repository: InMemoryRepository):
         self.__repository = repository
