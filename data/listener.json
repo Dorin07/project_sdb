@@ -1,0 +1,22 @@
+{
+  "listeners": [
+    {
+      "id": 0,
+      "name": "Dorin",
+      "age": 17,
+      "song_id": 2
+    },
+    {
+      "id": 1,
+      "name": "Mihai",
+      "age": 23,
+      "song_id": 0
+    },
+    {
+      "id": 3,
+      "name": "Alex",
+      "age": 20,
+      "song_id": -1
+    }
+  ]
+}

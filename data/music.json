@@ -1,0 +1,25 @@
+{
+  "music": [
+    {
+      "id": 0,
+      "name": "Lalala",
+      "artist": "Y2k",
+      "gen": "pop",
+      "duration": 2.40
+    },
+    {
+      "id": 1,
+      "name": "Natural",
+      "artist": "Imagine Dragons",
+      "gen": "pop",
+      "duration": 3.09
+    },
+    {
+      "id": 2,
+      "name": "Dance Monkey",
+      "artist": "Tones And I",
+      "gen": "pop",
+      "duration": 3.29
+    }
+  ]
+}

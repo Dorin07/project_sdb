@@ -1,3 +1,4 @@
+import json
 from domain.listener import Listener
 from repository.in_memory_repository import InMemoryRepository
 
@@ -5,9 +6,20 @@ from repository.in_memory_repository import InMemoryRepository
 class ListenerService:
     def __init__(self, repository: InMemoryRepository):
         self.__repository = repository
-        self.__repository.add(Listener(1, "Dorin", 17, 2))
-        self.__repository.add(Listener(2, "Tudor", 22, 1))
-        self.__repository.add(Listener(3, "Vlad",  14, 3))
+
+        try:
+            with open("data/listener.json", "r") as listener_file:
+                json_f = json.load(listener_file)
+                listeners_f = json_f["listeners"]
+                for listener_f in listeners_f:
+                    self.__repository.add(
+                        Listener(listener_f["id"],
+                                 listener_f["name"],
+                                 listener_f["age"],
+                                 listener_f["song_id"])
+                    )
+        except FileNotFoundError:
+            print("Listeners don't found! -> listener.json doesn't exist!")
 
     def add_listener(self, listener):
         self.__repository.add(listener)
