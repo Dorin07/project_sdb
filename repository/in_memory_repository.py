@@ -19,3 +19,6 @@ class InMemoryRepository:
             if entity == self.__entities[i]:
                 return i
         return -1
+
+    def update(self, new_entity, position):
+        self.__entities[position] = new_entity

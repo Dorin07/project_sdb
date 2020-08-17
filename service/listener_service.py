@@ -26,8 +26,15 @@ class ListenerService:
     def delete_listener(self, id):
         position = self.__repository.find_position(Listener(id, " ", 0, 0))
         if position == -1:
-            raise ValueError("The song does not exist!")
+            raise ValueError("The listener does not exist!")
         self.__repository.delete(position)
 
     def get_all_listeners(self):
         return self.__repository.get_all()
+
+    def update_listener(self, id, new_listener: Listener):
+        position = self.__repository.find_position(Listener(id, " ", 0, 0))
+        if position == -1:
+            raise ValueError("The listener does not exist!")
+        else:
+            self.__repository.update(new_listener, position)

@@ -10,8 +10,8 @@ class Music:
     def get_id(self):
         return self.__id
 
-    def set_id(self):
-        self.__id = id
+    def set_id(self, value):
+        self.__id = value
 
     def get_name(self):
         return self.__name

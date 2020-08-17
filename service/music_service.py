@@ -30,5 +30,14 @@ class MusicService:
             raise ValueError("The song does not exist!")
         self.__repository.delete(position)
 
+    def update_song(self, id, new_song: Music):
+        position = self.__repository.find_position(Music(id, " ", " ", " ", 0.0))
+        if position == -1:
+            raise ValueError("The song does not exist!")
+        else:
+            self.__repository.update(new_song, position)
+
     def get_all_songs(self):
         return self.__repository.get_all()
+
+
