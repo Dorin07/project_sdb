@@ -9,7 +9,7 @@
     {
       "id": 1,
       "name": "Mihai",
-      "age": 23,
+      "age": 33,
       "song_id": 0
     },
     {
@@ -17,6 +17,12 @@
       "name": "Alex",
       "age": 20,
       "song_id": -1
+    },
+    {
+      "id": 3,
+      "name": "Maria",
+      "age": 24,
+      "song_id": 3
     }
   ]
 }

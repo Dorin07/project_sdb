@@ -119,21 +119,37 @@ class ConsoleUI:
         for i in songs_list:
             print(i)
 
+    def __print_most_common_artist(self):
+        artist = self.__statistics_service.most_common_artist()
+        print("The most common artist is {0}".format(artist))
+
+    def __print_oldest_listener(self):
+        oldest_name = self.__statistics_service.the_older_listener()
+        print("The oldest listener is {0}".format(oldest_name))
+
+    def __print_younger_listener(self):
+        younger_name = self.__statistics_service.the_younger_listener()
+        print("The younger listener is {0}".format(younger_name))
+
     def __print_menu(self):
-        print("1. Add a song")
-        print("2. Remove a song after id")
-        print("3. Print most common musical gen")
-        print("4. Print average duration")
-        print("5. Print all songs")
-        print("6. Add a listener")
-        print("7. Remove a listener")
-        print("8. Print all listeners")
-        print("9. Update a song")
-        print("10. Update a listener")
-        print("11. Average age of listeners")
-        print("12. Number of song without a listener")
-        print("13. The songs without a listener")
-        print("0. Exit")
+        print("Options:\n"
+              "1. Add a song\n"
+              "2. Remove a song\n"
+              "3. Update a song\n"
+              "4. Add a listener\n"
+              "5. Remove a listener\n"
+              "6. Update a listener\n"
+              "7. Print all songs\n"
+              "8. Print all listeners\n"
+              "9. Print average duration\n"
+              "10. Print average age of listeners\n"
+              "11. Print most common musical gen\n"
+              "12. Most common artist of all song\n"
+              "13. Number of song without a listener\n"
+              "14. The songs without a listener\n"
+              "15. The oldest listener\n"
+              "16. The younger listener\n"
+              "0. Exit")
 
     def run(self):
         while True:
@@ -147,27 +163,33 @@ class ConsoleUI:
                 elif command == '2':
                     self.__delete_song()
                 elif command == '3':
-                    self.__print_most_common()
+                    self.__update_song()
                 elif command == '4':
-                    self.__print_average_duration()
-                elif command == '5':
-                    self.__print_all_songs()
-                elif command == '6':
                     self.__add_listener()
-                elif command == '7':
+                elif command == '5':
                     self.__delete_listener()
+                elif command == '6':
+                    self.__update_listener()
+                elif command == '7':
+                    self.__print_all_songs()
                 elif command == '8':
                     self.__print_all_listeners()
                 elif command == '9':
-                    self.__update_song()
+                    self.__print_average_duration()
                 elif command == '10':
-                    self.__update_listener()
-                elif command == '11':
                     self.__print_average_age()
+                elif command == '11':
+                    self.__print_most_common()
                 elif command == '12':
-                    self.__print_number_without_listener()
+                    self.__print_most_common_artist()
                 elif command == '13':
+                    self.__print_number_without_listener()
+                elif command == '14':
                     self.__print_all_songs_without_listener()
+                elif command == '15':
+                    self.__print_oldest_listener()
+                elif command == '16':
+                    self.__print_younger_listener()
                 else:
                     print("Not a valid comand!")
             except Exception as ex:

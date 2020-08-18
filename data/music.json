@@ -20,6 +20,13 @@
       "artist": "Tones And I",
       "gen": "pop",
       "duration": 3.29
+    },
+    {
+      "id": 3,
+      "name": "Believer",
+      "artist": "Imagine Dragons",
+      "gen": "pop",
+      "duration": 3.24
     }
   ]
 }

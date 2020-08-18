@@ -5,6 +5,10 @@ from repository.in_memory_repository import InMemoryRepository
 
 class MusicService:
     def __init__(self, repository: InMemoryRepository):
+        """
+        Constructor of MusicService class
+        Upload data from JSON file
+        """
         self.__repository = repository
 
         try:
@@ -20,21 +24,39 @@ class MusicService:
                               song["duration"])
                     )
         except FileNotFoundError:
-            print("Listeners don't found! -> listener.json doesn't exist!")
+            print("Music don't found! -> music.json doesn't exist!")
 
     def add_song(self, song):
+        """
+        Add a song to the list
+        :param song: The new song
+        """
         self.__repository.add(song)
 
     def delete_song(self, id):
+        """
+        Delete a song after id
+        :param id: id after the song will be delete
+        """
         position = self.__repository.find_position(Music(id, " ", " ", " ", 0.0))
         if position == -1:
             raise ValueError("The song does not exist!")
         self.__repository.delete(position)
 
     def get_all_songs(self):
+        """
+        Returns all songs to the ConsoleUI
+        :return: the list of all songs
+        """
         return self.__repository.get_all()
 
     def update_song(self, id, new_song: Music):
+        """
+        Update a song, and modify the json file: music.json
+        :param id: The id after song will be  update
+        :param new_song: The new data of song
+        :return: None
+        """
         position = self.__repository.find_position(Music(id, " ", " ", " ", 0.0))
         if position == -1:
             raise ValueError("The song does not exist!")
@@ -46,7 +68,7 @@ class MusicService:
         music_f = data["music"]
         json_file.close()  # Close the JSON file
 
-        ## Save our changes to JSON file
+        # Save our changes to JSON file
         for song in music_f:
             if id == song["id"]:
                 json_file = open("data/music.json", "w+")
