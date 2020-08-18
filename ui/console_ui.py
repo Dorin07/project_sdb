@@ -6,7 +6,8 @@ from service.statistics_service import StatisticsService
 
 
 class ConsoleUI:
-    def __init__(self, music_service: MusicService, listener_service: ListenerService,  statistics_service: StatisticsService):
+    def __init__(self, music_service: MusicService, listener_service: ListenerService,
+                 statistics_service: StatisticsService):
         """
         The constructor of the ConsoleUI class
         :param music_service: the service of the music entity service
@@ -109,9 +110,14 @@ class ConsoleUI:
         age = self.__statistics_service.average_age()
         print("The average age of all listeners is {0}".format(age))
 
-    def __print_all_songs_without_listener(self):
-        contor = self.__statistics_service.count_print_songs()
+    def __print_number_without_listener(self):
+        contor = self.__statistics_service.count_all_songs()
         print("The number of songs without a listener is {0}".format(contor))
+
+    def __print_all_songs_without_listener(self):
+        songs_list = self.__statistics_service.print_all_songs_without_listener()
+        for i in songs_list:
+            print(i)
 
     def __print_menu(self):
         print("1. Add a song")
@@ -126,6 +132,7 @@ class ConsoleUI:
         print("10. Update a listener")
         print("11. Average age of listeners")
         print("12. Number of song without a listener")
+        print("13. The songs without a listener")
         print("0. Exit")
 
     def run(self):
@@ -158,11 +165,10 @@ class ConsoleUI:
                 elif command == '11':
                     self.__print_average_age()
                 elif command == '12':
+                    self.__print_number_without_listener()
+                elif command == '13':
                     self.__print_all_songs_without_listener()
                 else:
                     print("Not a valid comand!")
             except Exception as ex:
                 print(ex)
-
-
-

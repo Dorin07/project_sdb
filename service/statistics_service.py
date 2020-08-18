@@ -40,11 +40,27 @@ class StatisticsService:
             sum += listeners[i].get_age()
         return sum / len(listeners)
 
-    def count_print_songs(self):
-        songs = self.__music_service.get_all_songs()
+    def count_all_songs(self):
         listeners = self.__listener_service.get_all_listeners()
         contor = 0
         for i in range(len(listeners)):
             if listeners[i].get_song_id() == -1:
                 contor += 1
         return contor
+
+    def print_all_songs_without_listener(self):
+        songs = self.__music_service.get_all_songs()
+        listeners = self.__listener_service.get_all_listeners()
+        list_id = []
+        new_list = []
+        for i in range(len(listeners)):
+            if listeners[i].get_song_id() != -1:
+                list_id.append(listeners[i].get_song_id())
+        for i in range(len(songs)):
+            sem = 0
+            for j in range(len(list_id)):
+                if songs[i].get_id() == list_id[j]:
+                    sem = 1
+            if sem == 0:
+                new_list.append(songs[i])
+        return new_list

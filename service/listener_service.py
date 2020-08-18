@@ -10,12 +10,12 @@ class ListenerService:
             with open("data/listener.json", "r") as listener_file:
                 json_f = json.load(listener_file)
                 listeners_f = json_f["listeners"]
-                for listener_f in listeners_f:
+                for listener in listeners_f:
                     self.__repository.add(
-                        Listener(listener_f["id"],
-                                 listener_f["name"],
-                                 listener_f["age"],
-                                 listener_f["song_id"])
+                        Listener(listener["id"],
+                                 listener["name"],
+                                 listener["age"],
+                                 listener["song_id"])
                     )
         except FileNotFoundError:
             print("Listeners don't found! -> listener.json doesn't exist!")
@@ -38,3 +38,19 @@ class ListenerService:
             raise ValueError("The listener does not exist!")
         else:
             self.__repository.update(new_listener, position)
+
+        json_file = open("data/listener.json", "r")  # Open the JSON file for reading
+        data = json.load(json_file)  # Read the JSON into the buffer
+        listeners_f = data["listeners"]
+        json_file.close()  # Close the JSON file
+
+        ## Save our changes to JSON file
+        for listener in listeners_f:
+            if id == listener["id"]:
+                json_file = open("data/listener.json", "w+")
+                listener["id"] = new_listener.get_id()
+                listener["name"] = new_listener.get_name()
+                listener["age"] = new_listener.get_age()
+                listener["song_id"] = new_listener.get_song_id()
+                json_file.write(json.dumps(data))
+                json_file.close()
